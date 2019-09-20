@@ -31,10 +31,10 @@ jobs:
     - run: git add test-reports/workflow-run-date.txt
     - run: git commit -m "Run Date Added"
 #    - run: git pull origin workflow-branch
-    - run: git push "https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}" workflow-branch
+    - run: git push "https://${{github.actor}}:${{secrets.ghtoken}}@github.com/${{github.repository}}" workflow-branch
     - name: Hub Pull Request
       run: hub pull-request -pf -m "Title\n\nBody"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ghtoken }}
         GITHUB_USER: ${{ github.actor }}
 
