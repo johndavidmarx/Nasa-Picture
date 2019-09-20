@@ -19,10 +19,18 @@ jobs:
     
     - name: Check version
       run: hub version
+
+    - run: git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+    - run: git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
     
+    - run: git fetch origin
+    - run: git checkout -b workflow-branch
+    - run: git status
+    - run: git branch
+       
     - name: Hub Pull Request
       run: hub pull-request -m "Title\n\nBody"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_USER: ${{ github.actor }}
-     
+
