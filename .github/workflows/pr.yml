@@ -11,11 +11,12 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Install Hub
-      run: mkdir /tmp/hub && \
-    (curl -SL https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz | tar --strip 1 -zxC /tmp/hub) && \
-    prefix=/usr /tmp/hub/install && \
-    rm -rf /tmp/hub
+    - run: mkdir /tmp/hub
+      
+    - run: curl -SL https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64-2.12.3.tgz | tar --strip 1 -zxC /tmp/hub
+    - run: /tmp/hub/install
+    - run: rm -rf /tmp/hub
     
-     - name: Check version
-       run: hub version
+    - name: Check version
+      run: hub version
      
