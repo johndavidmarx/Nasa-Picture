@@ -14,7 +14,7 @@ jobs:
       run: mkdir /tmp/hub
       
     - run: curl -SL https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64-2.12.3.tgz | tar --strip 1 -zxC /tmp/hub
-    - run: /tmp/hub/install
+    - run: sudo /tmp/hub/install
     - run: rm -rf /tmp/hub
     
     - name: Check version
