@@ -3,13 +3,16 @@ name: Propagate changes
 on: [push]
 
 jobs:
-  propagate:
-    name: Propagate changes
+  pullrequest:
+    name: Open Pull Request
     runs-on: ubuntu-latest
     steps:
-    - uses: rtimush/tenpureto-github-action@master
-      if: github.repository == 'johndavidmarx/Nasa-Picture'
-      with:
-        args: propagate
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install Hub
+      run: mkdir /tmp/hub && \
+    (curl -SL https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz | tar --strip 1 -zxC /tmp/hub) && \
+    prefix=/usr /tmp/hub/install && \
+    rm -rf /tmp/hub
+    
+    - name: Check version
+      run: hub version
+     
