@@ -1,12 +1,15 @@
-name: Propagate changes
+name: Pull Request
 
 on: [push]
 
 jobs:
-  pullrequest:
-    name: Open Pull Request
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
+    - uses: actions/checkout@v1
+
     - name: Install Hub
       run: mkdir /tmp/hub && \
     (curl -SL https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz | tar --strip 1 -zxC /tmp/hub) && \
