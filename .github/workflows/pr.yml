@@ -13,7 +13,7 @@ jobs:
     - name: Install Hub
       run: mkdir /tmp/hub
       
-    - run: curl -SL https://github.com/github/hub/releases/download/v2.12.3/hub-linux-amd64-2.12.3.tgz | tar --strip 1 -zxC /tmp/hub
+    - run: curl -SL https://github.com/github/hub/releases/download/v2.12.4/hub-linux-amd64-2.12.4.tgz | tar --strip 1 -zxC /tmp/hub
     - run: sudo /tmp/hub/install
     - run: rm -rf /tmp/hub
     
