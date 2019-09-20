@@ -27,7 +27,11 @@ jobs:
     - run: git checkout -b workflow-branch
     - run: git status
     - run: git branch
-       
+    - run: date > test-reports/workflow-run-date.txt
+    - run: git add test-reports/workflow-run-date.txt
+    - run: git commit -m "Run Date Added"
+#   - run: git pull origin workflow-branch
+    - run: git push "https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}" workflow-branch
     - name: Hub Pull Request
       run: hub pull-request -m "Title\n\nBody"
       env:
