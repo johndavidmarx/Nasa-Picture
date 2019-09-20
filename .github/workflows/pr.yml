@@ -16,6 +16,6 @@ jobs:
     prefix=/usr /tmp/hub/install && \
     rm -rf /tmp/hub
     
-    - name: Check version
-      run: hub version
+     - name: Check version
+       run: hub version
      
