@@ -24,4 +24,5 @@ jobs:
       run: hub pull-request -m "Title\n\nBody"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_USER: ${{ github.actor }}
      
